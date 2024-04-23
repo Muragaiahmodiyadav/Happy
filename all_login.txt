@@ -1,0 +1,110 @@
+EMS login :-
+link is in self (muragaiah modi)
+epcadmin
+Epcadmin@123
+
+
+
+HSS LOG in :
+
+LOG IN TO HSS dashboard
+username :- epcadmin
+possword:- Epcadmin@123
+
+got to provising 
+and copy the HSS active node IP address.
+present IP	10.254.58.201
+open putty server
+
+1. Login to HSS server with credentials as 
+user:- cdot /// pwd:- HSSb@123
+2. Goto below path
+    cd /opt/CDOT-hss/bin
+3. Type below command
+sudo su
+enter password as cdot123
+4. Execute CLI application with below command
+./hssSubsCLI
+
+usr :- test_user
+pwd - Test@12345
+
+
+
+wireshark open process
+
+select specific NODE ip address(mme , hss, pgw,sgw) and login through putty 
+Launch XMING app 
+
+            Go to putty ->Connection ->SSH->X11->Enable X11 Forwarding
+
+root and root123
+wireshark-gtk
+after open the screen , select any and click start
+
+
+USPS :- link is in HSS new joiners group
+
+super
+Super#321
+
+
+
+IPLOG :
+
+log in IPLOGMS 
+link is in group
+give cred :- cdot
+             cdot123
+
+
+IP LOG Spirent  login :- 
+click "tasclient" (is in desktop)
+kindly login in, with
+the cred (user name-u2224601, pswrd- Tcs@12345)
+
+
+
+
+LIS :- 
+
+Access to LIS GUI 
+
+To access this interface follow the below steps 
+
+Connect to Global  Protect VPN 
+
+Launch XMING app 
+
+            Go to putty ->Connection ->SSH->X11->Enable X11 Forwarding 
+
+Login to putty and open LIS  server 
+
+LIS server 10.254.58.123
+credentials: root/root123  
+
+Command : firefox &
+
+after that select
+10.254.58.123 window box 
+give this creds
+
+super/password1
+
+
+
+
+BKPRST login:
+
+gui link is in group
+GUI :- super
+ Bkprst@5510
+
+
+
+CLI :-
+10.254.58.241  puttyip
+
+user:root
+password:Cloud@4g#
+
