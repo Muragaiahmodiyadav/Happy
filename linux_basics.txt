@@ -1,0 +1,312 @@
+--> linux :
+linux is a open source and it is multitasking operating system
+
+--> linux shells:
+
+bash is the cooman using shell in linux
+
+c shell
+bourn shell 
+bourn again shell(bash)
+korn shell
+fish( friendly interface shell)
+zshell
+
+--> how to connect to linux:
+
+boot linux os
+username, pssdowrd
+
+--> remotely connect(login):
+
+xtelnet (is not seccure)
+ssh (secure shell)
+putty (connect through windows)
+
+
+--> command structure/ syntax:
+
+$ command -argument1  -argument2
+
+ex:  ls
+     ls -l
+     ls -la
+
+
+ls : this command shows list of files and directorys
+ls -la  : this command used for all list of files along with hidden files
+          also.
+who : this command used for to know the who is using this terminal last time
+
+hostname:
+
+uname:
+
+uname -a: to know the version
+
+man : to get the help particular command in linux
+
+ex:  man ls
+
+man --help
+
+cd --help
+
+cd .. --> it will go to one directory back
+
+cat ---> display the content of the file and also used to create a new file and we need to give text.
+
+cat muraga.txt
+
+cat > muraga1.txt
+"hai welcome"
+
+tac --- > it is similar to cat command and it display the file content reverse order.
+
+more command ----> it is similar to cat command and if file size is more content at the time it displays the content page format. space bar is go to next page
+
+b key: To move to the previous page. / key: To search the string.
+
+Syntax:
+
+more <file name>
+
+
+what is cd
+it goes to one directory back
+
+grep :- print lines or string matching a pettern 
+
+what is grep
+
+grep config
+
+--> help on command
+man
+man -k
+--help
+apropos
+whatis
+
+-->history :- it will show what commands have you used last time
+
+ex:- 1. cd
+     2. grep
+     3. ls
+     4. man
+
+if you type !3
+          the ls command will run
+
+
+--> file system:
+
+/root --> /tmp , /bin , etc, sbin, dev , opt, usr, home , --var 
+
+where we have one root user and in that user consist of above directorys
+are located usder root .
+
+
+--> file types:
+
+regular(images,files,tar files) , direcory(sub folders), special(symbolic link)
+
+-->touch :- it creats a empty file 
+
+note 1:- do not use /(slase) before creating a file beacuse it will store 
+     root directory. that / is reffred to root.
+
+
+--> tree :- this command shows output all files/ directorys structure like
+vertical way so easy to find sub folders also.
+
+--> now i want to create three folders in one particular directory 
+the directory name is muraga
+    --> mkdir muraga
+    --> cd muraga
+    --> touch a b c 
+    --> tree 
+    output
+         muraga 
+               --a
+               --b
+               --c
+where muraga is directory and a,b,c are folders.
+
+
+--> how to rename the file ----> mv
+
+    syntax:-   mv oldfile newfile
+    
+    ex:- mv myfile muragafile
+
+--> how to create file 
+
+     touch , vi, vim , nano
+
+--> how to edit file 
+
+    vi, vim , nano 
+
+--> how to search perticular string in file
+
+   grep command 
+  
+ex:- grep hai muragafile
+
+where hai is string and muaragafile is file.
+
+
+--> how to search a perticular string in edit(vi) 
+
+we use ---> /hai 
+
+-->what is the diff bw grep and egrep?
+
+in egrep , you can search more then one command at the same time 
+
+syntax: - egrep "key1|key2|key4"
+
+
+
+-->how get to know file permissions
+
+  ls -l
+  ll
+  getfacl muragafile
+
+
+---> how to check the ip of your linux server?
+
+   ifconfig
+   ip addr
+
+
+----> how to read top 5 lines in a file?
+
+head -5 file_name
+
+---> how to read last 5 lines in  file?
+
+tail -5 file_name
+
+
+--->how to list hidden files?
+
+ls -la
+
+
+--> how to see all the recently used commands?
+
+history
+
+
+---> what is root?
+
+root is a admin or super user 
+
+
+---->what is inode and how to find it for a file?
+
+ls -li
+
+inode is an index node, it serves as a unique identifier for a specific
+piece of metadata on a given filesystem.
+
+
+--->which command can you use for finding files on a linux system?
+
+ find
+ locate
+
+ex:- locate muragafile
+
+---->command for counting words and lines?
+
+   wc
+   wc -l
+ ex:- wc -l muragafile
+  7 lines
+ex:- wc muragafile
+  7 6 42     
+
+ where 7 lines , 6 words , 42 charecters
+
+
+---> how can you combine two commands ?
+
+we can combine two commands using | (pipe) command
+
+the pipe is used to cobmine two commands.
+
+ex:- cat muragafile | wc -l
+
+
+--->how to see difference between the two files?
+
+
+ diff file1 file2
+
+
+
+--->what is the use of the shredcommand do?
+
+
+permanently delete a file which is unable to recover
+
+shred -u file_name
+shred --remove file_name
+
+
+
+---->how to check system architecture info?(hardware information)
+
+lscpu
+
+dmidecode
+
+
+---> how to combine two files?
+
+cat file1 file2
+
+cat file1 file2 > file3
+
+
+
+--->how to sort the file (like assending )?
+
+sort muragafile1
+ cat muragafile | sort
+
+
+
+---> different ways to access a linux server remotely (from a windows machine)?
+
+using some tools and terminal like
+
+  putty
+  git bash
+  cmd
+
+
+******************file permissions**************************
+
+
+-->what are the types of permissions for a file in linux
+
+read(r)
+write (w)
+executable(x)
+
+
+---> how to create directory and sub directories at a time by using single command 
+
+mkdir -p htg/{articles/{new,rewrites},images,notes,done}
+
+The -p flag tells the mkdir command to create the main directory first if it doesn't
+already exist (htg, in our case)
+
+
+I would like to inform you that my brother marriage is going to be held on 11th april.  i am requesting you to grant me leave from 10th april and 12 april as i have to join with my family for this occasion. please accept my leave request.Thank you
+ 
