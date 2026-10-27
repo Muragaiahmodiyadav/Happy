@@ -1,0 +1,61 @@
+Question 1:- assume there are two tabels orders and payments. find the the employees who haven't paid.
+
+
+Sol-    select o.OrderID, o.CustomerName, p.OrderID
+    from Orders o left join Payments p 
+    on o.OrderID = p.OrderID
+    where p.OrderID is NULL
+
+Out put:- 
+OrderID     CustomerName     OrderID    
+-------------------------------------
+ 105         James            NULL
+
+=============================================================================================
+Question 2
+find employees and their managers 
+
+Sol)  select e.empname as employee, coalesce(m.empname, 'no manager') as manager
+ from employeee e left join employeee m
+ on m.empid = e.mgrid
+
+out put:
+employee   manager   
+---------- ----------
+ravi       no manager
+muraga     ravi      
+avun       ravi      
+modi       avun      
+kiran      avun
+
+=============================================================================================
+Question 3
+I want all users who have never placed an order
+
+Sol 1) select c.CustomerID, c.CustName
+from Customers C left join orders o
+on c.CustomerID = o.CustomerID
+where o.CustomerID is null;
+
+Sol 2)select c.CustomerID,c.CustName
+from Customers c 
+where not exists (select 1
+                  from orders o
+                  where o.CustomerID = c.CustomerID)
+Out put
+------
+
+CustomerID  CustName                                                                                            
+----------- ------------------------
+          5 William Wilson                                                                                      
+         12 Charlotte Harris                                                                                    
+         16 Evelyn Martinez                                                                                     
+         17 Daniel Robinson                                                                                     
+         18 Harper Clark                                                                                        
+         20 Ella Lewis                                                                                          
+         24 Lily Allen                                                                                          
+         25 Samuel Young                                                                                        
+         28 Hannah Wright       
+         29 Christopher Lopez 
+
+=============================================================================================
