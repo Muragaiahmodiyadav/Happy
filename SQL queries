@@ -59,3 +59,55 @@ CustomerID  CustName
          29 Christopher Lopez 
 
 =============================================================================================
+Question 4
+----------- In vs Exists vs Join
+In
+-- :- In checks whether a value matches any value in a list or the result of a subquery.
+Think of IN as asking "Is this value in the list?"
+
+SELECT CustomerID, Name     -- Can return multiple columns
+FROM Customers
+WHERE CustomerID IN (
+    SELECT CustomerID       -- Must return ONE column for this IN comparison
+    FROM Orders
+);
+
+What If Duplicates exists?
+--------------------------
+DId  | Dname
+10   | IT
+10   | Information technology
+20   | HR
+
+IN:- Ravi(Customer) appears once because his department ID matches the list.
+
+EXISTS
+------
+Exists checks whether a subquery retunrs at least one row that satisfies its condition.
+Think of IN as asking "Is there at least one matching row?"
+
+select c.CustomerID,c.CustName
+from Customers c 
+where not exists (select 1
+                  from orders o
+                  where o.CustomerID = c.CustomerID)
+
+What If Duplicates exists?
+--------------------------
+Exists :- Ravi (Customer) appears once because SQL only checks whether a matching row exists.
+
+Joins:
+-----
+Join combines rows from two tables based on a matching condition. you can retrive columns from both tables.
+Think of IN as asking "Combines the matching rows from these tables"
+What If Duplicates exists?
+--------------------------
+Join:- Ravi appears twice beacuse his department ID matches two department rows.
+
+Performance Tip:- don't assume Exists is always faster than IN na d JOIN. doern databse optimizes can produce similar execution plans . 
+performance depends on the database, indexes, data distribution, and query structure.
+
+===========================================================================================================================
+Question 5:
+
+
