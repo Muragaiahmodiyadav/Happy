@@ -1,0 +1,62 @@
+Q1) print highest value in the list.
+
+number=[10,20,11,21,15,9]
+max_number=0
+for i in number:
+  if i > max_number:
+    max_number = i
+print("max number:",max_number)
+
+Out put:- max number: 21
+--------
+=======================================================================================
+Q2) print the values in nested list.
+
+numbers= [5,10,35,[20,25],8,20,[30,40],2,[2,6]]
+
+for I in numbers:
+  if type(I) == list:
+    for j in I:
+      print(j)
+  else:
+    print(I)
+
+Out put:-
+-------
+5
+10
+35
+20
+25
+8
+20
+30
+40
+2
+2
+6
+=======================================================================================
+Q3) what is the meaning of it?
+range (4)
+
+A) start with 0 and last value is 3.
+0 1 2 3
+
+List
+----- a list stores mutliple values in a single variable.
+the first index is 0 not 1.
+lis = [10,20,30,40]
+--> print(lis[0])
+10
+--> print(lis[2])
+30
+--> print(lis.append(50))
+[10,20,30,40,50]
+--> print(lis[-1])
+[50]
+--> pritn(len(lis))
+5
+--># update
+--> lis[1]=10
+[10,10,20,30,40,50]
+-->
