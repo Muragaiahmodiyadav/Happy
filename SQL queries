@@ -1,3 +1,5 @@
+Section A
+=========
 Question 1:- assume there are two tabels orders and payments. find the the employees who haven't paid.
 
 
@@ -109,5 +111,54 @@ performance depends on the database, indexes, data distribution, and query struc
 
 ===========================================================================================================================
 Question 5:
+----------- what is a correlated subquery?
+-- A correlated subquery is an inner sql query that depends on the outer query.
+-- the inner query needs information from the outer query to do its work.
 
+Q ) find the latest order date for every user.
 
+select c.CustomerID,(select max(o.OrderDate)
+                     from Orders o
+                     where o.CustomerID = c.CustomerID) as latest_order
+from Customers c;
+
+Oot put:
+--------
+CustomerID  latest_order    
+----------- ----------------
+          1       2026-02-17
+          2       2026-02-12
+          3       2026-01-10
+          4       2026-01-15
+          5             NULL
+work flow:- customer 1 - inner query checks orders belonging to customer 1 -- returns latest order date.
+the inner query depends on c.customerID. that's why it's called a correlated sub query.
+
+what does row by row mean?
+-------------------------
+imagine you have 1 million users.
+Conceptually, SQL:
+1. takes the first user.
+2. checks their orders
+3. takes the second user
+4. checks their orders
+5. continues for the remaining users.
+this is what people mean when they say row by row processing.
+
+why can it be slow?
+-------------------
+user table -- 1 million rows
+orders table - 10 million rows
+
+bad execution scenario - it could repeatedly search through million of order records for each user.
+but nodern databases can often optimize this so correleated suquery does not automatically mean slow SQL.
+modern solution:
+------------------
+with ranked as(
+select user_id, created_at,
+row_number() over(partition by user_id order by created_at desc) as rn
+select u.userid, r.created as latest_order
+from users u left join ramkedorders r
+on u.user_id = r.user_id and r.rn = 1;
+
+EXISTS is commonly used with correlated subqueries
