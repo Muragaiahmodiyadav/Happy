@@ -1,5 +1,5 @@
-Section A
-=========
+Section A  joins and subqueries
+================================
 Question 1:- assume there are two tabels orders and payments. find the the employees who haven't paid.
 
 
@@ -162,3 +162,60 @@ from users u left join ramkedorders r
 on u.user_id = r.user_id and r.rn = 1;
 
 EXISTS is commonly used with correlated subqueries
+
+
+solution 6
+----------- Semi join
+What's a semi join? why is EXISTS the natual why to write one?
+
+A semi join retunrs rows form the left table when a macthing row exists in the right table. 
+Unlike an inner join, it doesn't duplicate left side rows when multiple matches exist. 
+we commonly implement it using EXISTS or IN. if we want rows without matches, we use NOT EXISTS, which is an anti-semi-join.
+1. Imagine two tables 
+order table                      |          payments table
+order_ID     Customer            |       payment_ID         Order_ID
+101             happy            |             p1               101
+102             muraga           |             p2               101
+103             modi             |             p3               103
+104             narayana         |             p4               105
+
+Q) get the orders that have at least one matching payment
+by using inner join                                    by using the semi join
+--------------------                               ----------------------------------           
+select o.order_id,o.customer                                select o.order_id, o.customer
+from orders o                                                from orders o
+inner join payments p                                        where exists ( select 1
+on o.order_id = p.order_id;                                                 from payments p
+                                                                            where p.order_id = o.order_id
+out put                                                   out put
+--------------                                         ----------------
+order_id       customer                                order_id       customer
+101             happy                                   101             happy
+101             happy                                   103             modi
+103             modi
+
+inner join --- retunrs matching rows, and duplicates can occur if multiple matching exist.
+semi join --- retunrs only the rows from the left table for which a match exists, without duplicating them due to right table matches.
+
+why select 1
+------------
+here , 1 is just a placeholder. we don't need to retrive actual data from the paymenst table.
+we only want to ckech whether a matching row exists. the database cares about the existence of a row, not the values selected.
+
+what is an anti-semi-join
+-----------------------
+it is the opposite of a semi join
+semi join- find orders that have payments.
+anti semi join -- find orders that don't have payments.
+select o.order_id , o.customer
+from orders o
+where not exists(select 1
+                 from paymenst p
+                 where p.orders_id = o.order_id
+
+out put
+---------
+orderid         customer
+102                muraga
+104                narayana
+
